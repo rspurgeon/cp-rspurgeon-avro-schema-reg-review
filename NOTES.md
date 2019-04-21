@@ -30,6 +30,7 @@ At times the control center will not survive a macbook sleep -> restart scenario
 #### Documentation Notes
 From the cp quickstart, the left margin is where the SR is referenced, which leads to here, which is where I'll start my development project: https://docs.confluent.io/current/schema-management.html
 
+##### simple producer notes
 From the top levels of the documentation, there isn't any initially apparent dialog about data format decisions.  Jay Kreps has a good [blog post](https://www.confluent.io/blog/avro-kafka-data/) about this.  I think the wireline format decision is one of the critical first decisions for a new adopter (the likely audience for quickstart), so maybe pros/cons of this decision could be more prominent in the "Next Steps" Section at the tail of the cp quickstart: https://docs.confluent.io/current/quickstart/ce-quickstart.html#next-steps  We could link the Kreps blog or we could author a new document that details the pros / cons of this decision highlighting the pros of Avro/SR through the rest of the platform... maybe something like this [feature support matrix for the client](https://docs.confluent.io/current/clients/index.html#feature-support)
 
 [Schema Registry Developer Guide](https://docs.confluent.io/current/schema-registry/develop/development.html) made me think I was going to get documentation on developing to Avro/SR, but instead this is related to building SR itself.
@@ -38,4 +39,11 @@ Took me some poking around before I found what I think is the key [document](htt
 
 Building the producer was easy once I was in the right place in the documentation.  [Schema Registry Serializer and Formatter](https://docs.confluent.io/current/schema-registry/serializer-formatter.html#serializer-and-formatter) turned out to be the most applicable to my desired use case, which was fast time to market for a basic producer.
 
+
+##### Notes for streaming app
+As I initially flip through this to build my streaming app: https://docs.confluent.io/current/streams/index.html, documentation on how to configure de/sereds for Avro/SR is not apparent.  There are a few eample repos that might help that i've been linked to from the cp documentation:
+
+* https://github.com/apache/kafka/tree/2.2/streams/examples/src/main/java/org/apache/kafka/streams/examples
+* https://github.com/confluentinc/kafka-streams-examples/tree/5.2.1-post/
+  * This [chart](https://github.com/confluentinc/kafka-streams-examples/tree/5.2.1-post/#examples-runnable-applications) is very helpful, i think more like this across
 
