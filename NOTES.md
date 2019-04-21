@@ -34,5 +34,8 @@ From the top levels of the documentation, there isn't any initially apparent dia
 
 [Schema Registry Developer Guide](https://docs.confluent.io/current/schema-registry/develop/development.html) made me think I was going to get documentation on developing to Avro/SR, but instead this is related to building SR itself.
 
-Took me some poking around before I found what I think is the key [document](https://docs.confluent.io/current/app-development/index.html) for a developer who wishes to start producing data using 'old school' producer.
+Took me some poking around before I found what I think is the key [document](https://docs.confluent.io/current/app-development/index.html) for a developer who wishes to start producing data using 'old school' producer.  This document nicely helps me with the maven dependencies, but... uh oh, it's not resolving.  Experience tells me that it's because confluent hosts their own maven repository... So Now i need to google that because I can never remember it.  I think anywhere the documents list cp dependencies, this bit of information needs to be readily apparent.  Using the confluent site search to look for this isn't proving useful, search terms like `packages` or `maven` don't give me top hit of what i want.  resorting to google.  Ok, i got led back to cp [client install document](https://docs.confluent.io/current/clients/install.html)
+
+Building the producer was easy once I was in the right place in the documentation.  [Schema Registry Serializer and Formatter](https://docs.confluent.io/current/schema-registry/serializer-formatter.html#serializer-and-formatter) turned out to be the most applicable to my desired use case, which was fast time to market for a basic producer.
+
 
