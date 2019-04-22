@@ -1,12 +1,12 @@
 
 ### Confluent Platform Schema Registry & Avro Review
-The agenda for this project was to evaluate the confluent Schema Registry (SR) and Avro as it relates to developer friction.  Primarily I was asked to look for any experiences that would prevent me from viewing the product as pleasant and sensible.  A secondary goal was to look for gaps in the documentation and provide suggestions on improvements.
+The agenda for this project was to evaluate the Confluent Schema Registry (SR) and Avro as it relates to developer friction.  Primarily I was asked to look for any experiences that would prevent me from viewing the product as pleasant and sensible.  A secondary goal was to look for gaps in the documentation and provide suggestions for improvements.
 
 I attempted to approach this problem from the perspective of a developer, making the assumption that this technical role was the desired one for which to remove fricition (versus a System Administrator or KSQL user, for instance).
 
 Following the documentation I wrote two programs.
 * The first program served the purpose of using the core Kafka Producer client to publish some sample data in Avro format.  I wanted to experience using SR/Avro at the base level.
-* The seconds program was a KStream application that aimed to read the Avro values, calculate a materialized value, and produce a different type.
+* The seconds program was a KStream application that aimed to read the Avro values, calculate a derived value, and produce a different type.
 
 I attempted to use the development of the programs as a way to surface issues in the product or documentation.  It was requested to maintain a 2 hour timebox on this project, which proved to be quite limiting for finding serious flaws in the products as they are mature.
 
@@ -31,6 +31,8 @@ One idiosyncrasy is in the difference between the SR concepts vs the Kafka conce
 * Move the Schema Registry Developer Guide into the SR code repository, or elswehwere labeled, to prevent a reader from thinking they are reading the more developer specific documentation.
 
 * Improve search term results in Confluent Documentation search to increase relevance.
+
+* Anywhere within the documentation that references adding a JVM dependency, the code required to add the Confluent repository should be included with it.  I had to Google to find the relevant POM entry, althought it's located in the documentation in places, not everywhere that dependencies are decribed.  Searching for `packages` or `maven` did not help me here.
 
 * Without much thought to implementation difficulty, a "virtual" route could be added to the SR HTTP Service to bridge the terminiology between SR and Kafka.  For instance, a `topics` route could be added that provides the Key/Value schema data as a pair instead of them being under `subjects` with independent names.  Something like the following:
 
