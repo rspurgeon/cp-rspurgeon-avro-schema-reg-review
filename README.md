@@ -25,14 +25,33 @@ One idiosyncrasy is in the difference between the SR concepts vs the Kafka conce
 * The Confluent Documentation search feature gave me problems when looking for SR/Avro specific documents.  For instance, searching for `maven` or `packages` resulted in unhelpful results.
 * The "Schema Registry Developer Guide" is presented among the documentation and my first assumption was that this would contain the documentation I needed to build applications against the SR.  However, it appears that this documentation is somehwat about building SR itself, some plugins, or utilizing the REST API, which I find somewhat misleading.  In my opinion, the typical developer is going to, first, use 'out of the box' de/serdes which should be more clearly described before building SR itself or showcasing the HTTP API.
 
-### Recommenations
-* From the Quick Start documentation, there isn't any 'early' dialog about data format decisions.  I think the record format question is one of the critical first decisions for a new adopter (the likely audience for quickstart).  I would recommend adding a "Feature Support Matrix" style document, linked from the "Next Steps" Section at the tail of the [cp quickstart](https://docs.confluent.io/current/quickstart/ce-quickstart.html#next-steps). An example of this kind of document for [clients exsits](https://docs.confluent.io/current/clients/index.html#feature-support). This document should clearly highlight the SR/Avro integrations through the rest of the platform.  A link to the [Jay Kreps blog](https://www.confluent.io/blog/avro-kafka) on the subject could be benefiical.  
+### Recommendations
+* From the Quick Start documentation, there isn't any 'early' dialog about data format decisions.  I think the record format question is one of the critical first decisions for a new adopter (the likely audience for quickstart).  I would recommend adding a "Feature Support Matrix" style document, linked from the "Next Steps" Section at the tail of the [cp quickstart](https://docs.confluent.io/current/quickstart/ce-quickstart.html#next-steps). An example of this kind of document for [clients exists](https://docs.confluent.io/current/clients/index.html#feature-support). This document should clearly highlight the benefits of the SR/Avro integrations through the rest of the platform.  A link to the [Jay Kreps blog](https://www.confluent.io/blog/avro-kafka) on the subject could be benefiical.  
 
-* Move the Scheam Registry Developer Guide into the SR code repository, or elswehwere labeled,to prevent a user from thinking they are reading the more developer specific documentation.
+* Move the Schema Registry Developer Guide into the SR code repository, or elswehwere labeled, to prevent a reader from thinking they are reading the more developer specific documentation.
 
 * Improve search term results in Confluent Documentation search to increase relevance.
 
-* Withouth much thought to implementation difficulty, A "virtual" route could be added to the SR HTTP Service to bridge the terminiology between SR and Kafka.  For instance, a `topics` route could be added that provides the Key/Value schema data as a pair instead of them being under `subjects` with independent names.
+* Without much thought to implementation difficulty, a "virtual" route could be added to the SR HTTP Service to bridge the terminiology between SR and Kafka.  For instance, a `topics` route could be added that provides the Key/Value schema data as a pair instead of them being under `subjects` with independent names.  Something like the following:
+
+```
+curl -XGET http://localhost:8081/topic-schemas
+[
+  { "name": "weather-readings",
+    "key": {
+      "subject": "weather-readings-key",
+      "schema": {
+        ...
+      }
+    },
+    "value": {
+      "subject": "weather-readings-value",
+      "schema": {
+        ...
+      }
+    }
+]
+```
 
 ### Notes
 [Full notes from project here](NOTES.md)
