@@ -15,7 +15,7 @@ Generally, and as a matter of opinion, I find the Confluent documentation to be 
 
 Starting from the CP Quick Start, as requested, there is no immediately apparent documentation related to message formatting.  To find the relevant documentation for the simple producer I wanted to build, I needed to navigate using the documentation Table Of Contents tree in order to find documentation specific to SR/Arvo.  Once I found the [key document](https://docs.confluent.io/current/app-development/index.html), coding the Producer with Avro schemas was relatively painless.  The most painful experience during this phase was crafting an Avro Schema String literal in Java, as most other languages support raw strings to ease this difficulty.
 
-Moving to the KStreams application, I ran into slightly more difficulty dealing with message formats as my experiences were dated in this area.  I found [this document]((https://docs.confluent.io/current/app-development/index.html) to be particularly helpful for my streaming application use case.  However, I spent more time looking at Confluent sample code repositories for this stage of the task than I did at documentation.  I had to commit myself to reading, with care, some of the documentation as it related to changing formats within the stages of the Streaming Topology.  As this is a complex topic and API, it's not surprising to me that I stumbled here.  Generally the documentation was clear here and without further thought I cannot derive ways in which the API behavior could be presented clearer.
+Moving to the KStreams application, I ran into slightly more difficulty dealing with message formats as my experiences were dated in this area.  I found [this document](https://docs.confluent.io/current/app-development/index.html) to be particularly helpful for my streaming application use case.  However, I spent more time looking at Confluent sample code repositories for this stage of the task than I did at documentation.  I had to commit myself to reading, with care, some of the documentation as it related to changing formats within the stages of the Streaming Topology.  As this is a complex topic and API, it's not surprising to me that I stumbled here.  Generally the documentation was clear here and without further thought I cannot derive ways in which the API behavior could be presented clearer.
 
 Over all, I think the SR/Avro system works quite well and as expected.  The integrations with Confluent Serdes is strong.  I especially like the new (to me) Control Center integration with topic inspection.
 
@@ -30,5 +30,10 @@ One idiosyncrasy is in the difference between the SR concepts vs the Kafka conce
 
 * Move the Scheam Registry Developer Guide into the SR code repository, or elswehwere labeled,to prevent a user from thinking they are reading the more developer specific documentation.
 
+* Improve search term results in Confluent Documentation search to increase relevance.
+
+* Withouth much thought to implementation difficulty, A "virtual" route could be added to the SR HTTP Service to bridge the terminiology between SR and Kafka.  For instance, a `topics` route could be added that provides the Key/Value schema data as a pair instead of them being under `subjects` with independent names.
+
 ### Notes
 [Full notes from project here](NOTES.md)
+
