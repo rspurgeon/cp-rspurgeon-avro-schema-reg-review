@@ -9,6 +9,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.errors.SerializationException;
 
 import java.util.Properties;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class WeatherStationEmitter {
@@ -43,11 +44,12 @@ public class WeatherStationEmitter {
 
         Schema.Parser parser = new Schema.Parser();
         Schema schema = parser.parse(weatherReadingSchema);
+        Random rnd = new Random();
 
         while(justKeepSwimming.get()) {
 
             GenericRecord weatherReading = new GenericData.Record(schema);
-            weatherReading.put("temp", 72D);
+            weatherReading.put("temp", rnd.nextDouble()* 100);
             weatherReading.put("dewpoint", 45);
             weatherReading.put("humidity", 33D);
             weatherReading.put("wind", "11 mph SSE");

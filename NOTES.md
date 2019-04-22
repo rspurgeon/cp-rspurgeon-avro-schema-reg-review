@@ -41,9 +41,10 @@ Building the producer was easy once I was in the right place in the documentatio
 
 
 ##### Notes for streaming app
-As I initially flip through this to build my streaming app: https://docs.confluent.io/current/streams/index.html, documentation on how to configure de/sereds for Avro/SR is not apparent.  There are a few eample repos that might help that i've been linked to from the cp documentation:
+As I initially flip through this to build my streaming app: https://docs.confluent.io/current/streams/index.html, documentation on how to configure de/sereds for Avro/SR is not apparent.  There are a few example repos that might help that i've been linked to from the cp documentation:
 
 * https://github.com/apache/kafka/tree/2.2/streams/examples/src/main/java/org/apache/kafka/streams/examples
 * https://github.com/confluentinc/kafka-streams-examples/tree/5.2.1-post/
   * This [chart](https://github.com/confluentinc/kafka-streams-examples/tree/5.2.1-post/#examples-runnable-applications) is very helpful, i think more like this across
+* https://docs.confluent.io/current/streams/developer-guide/datatypes.html
 
